@@ -1,7 +1,13 @@
 .body_bg {
   background-color: #222D32;
 }
-
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+  text-decoration: none;
+}
 /*头部*/
 .panel{
   border:0;
@@ -14,4 +20,39 @@
 }
 .mt_150{
   margin-top:150px;
+}
+
+
+/*index 侧边栏*/
+.lt_aside{
+  width:180px;
+  height:100%;
+  background-color: #222D32;
+  position: fixed;
+  left:0;
+  top:0;
+}
+.lt_aside .title{
+  height:50px;
+  line-height:50px;
+  background-color: #367FA9;
+  text-align: center;
+}
+.lt_aside .title a{
+  font-size:24px;
+  color: #fff;
+}
+.lt_aside .user{
+  height:180px;
+  text-align: center;
+}
+.lt_aisde .user img{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+}
+.lt_aisde .user p{
+  text-align: center;
+  font-size:20px;
+  color: #fff;
 }
