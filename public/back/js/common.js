@@ -43,7 +43,7 @@ $(function(){
   });
   /*退出功能*/
   $(".icon_logout").on("click",function(){
-    $('.modal').modal('show');
+    $('#modalLogout').modal('show');
   });
   $('.logoutBtn').on("click",function(){
     $.ajax({
