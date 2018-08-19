@@ -143,3 +143,13 @@ ul{
   float: right;
   /*margin-right:100px;*/
 }
+
+/*usery页*/
+.table{
+  text-align: center;
+}
+.table th,
+.table tbody>tr>td{
+  text-align: center;
+  vertical-align: middle;
+}
