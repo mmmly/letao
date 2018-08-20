@@ -125,11 +125,15 @@ $(function(){
       success:function(info){
         console.log(info);
         //发送成功后,关闭模态框,重新渲染数据
-        if(success.info){
+        if(info.success){
         $('#addSecond').modal('hide');
         currentPage = 1;
         render()
-
+          //重置表单元素
+          $('#form').data("bootstrapValidator").resetForm(true);
+          //重置非表单元素
+          $('#imgBox img').attr("src","./images/default.png");
+          $('#dropdownText').text("请选择一级分类");
         }
       }
     })
