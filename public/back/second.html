@@ -96,16 +96,18 @@
           <div class="modal-body">
             <div class="form-group">
               <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" name="dropdownMenu1">
                   <span id="dropdownText">请选择一级分类</span>
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                 </ul>
               </div>
+                <input type="hidden" id="dropHid" name="categoryId" >
+                <input type="hidden" value="1">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="addCategory" name="categoryName" placeholder="请输入二级分类">
+              <input type="text" class="form-control" id="addCategory" name="brandName" placeholder="请输入二级分类">
             </div>
             <div class="form-group">
               <label for="fileUpload" type="button" class="btn btn-default" >上传图片</label>
@@ -113,6 +115,7 @@
             </div>
             <div class="form-group" id="imgBox">
               <img src="./images/default.png" alt="" width="100px" name="pic1">
+              <input type="hidden" id="picHid" name="brandLogo">
             </div>
           </div>
           <div class="modal-footer">

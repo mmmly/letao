@@ -85,6 +85,8 @@ $(function(){
           //重新渲染数据
           currentPage = 1;
           render();
+          //表单重置
+          $('#form').data('bootstrapValidator').resetForm(true);
         }
       }
 

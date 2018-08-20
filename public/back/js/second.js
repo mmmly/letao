@@ -58,14 +58,78 @@ $(function(){
     var text = $(this).text();
     //console.log(text);
     $('#dropdownText').text(text);
+    var id = $(this).data("id");
+    //隐藏域表单信息同步
+    $('#dropHid').val(id);
+    //重置表单
+    $('#form').data("bootstrapValidator").updateStatus("categoryId","VALID");
   });
-  //上传图片
+  //上传图片预览
   $('#fileUpload').fileupload({
       dataType:"json",
       done:function(e,data){
-      console.log(data);
+      //console.log(data);
       var imgUrl = data.result.picAddr;
         $('#imgBox img').attr("src",imgUrl);
+        //隐藏域表单信息同步
+        $('#picHid').val(imgUrl);
+        //重置表单
+        $('#form').data("bootstrapValidator").updateStatus("brandLogo","VALID");
     }
   });
+
+
+
+
+  //二级分类页的表单校验
+  $('#form').bootstrapValidator({
+    excluded: [],
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields:{
+      categoryId:{
+        validators:{
+          notEmpty:{
+            message:"请选择一级分类"
+          }
+        }
+      },
+      brandName:{
+        validators:{
+          notEmpty:{
+            message:"请输入二级分类名称"
+          }
+        }
+      },
+      brandLogo:{
+        validators:{
+          notEmpty:{
+            message:"请上传文件"
+          }
+        }
+      }
+    }
+  });
+  //表单校验成功后,阻止默认事件
+  $('#form').on("success.form.bv",function(e){
+    e.preventDefault();
+  //发送ajax请求
+    $.ajax({
+      type:"post",
+      url:"/category/addSecondCategory",
+      data:$('#form').serialize(),
+      dataType:"json",
+      success:function(info){
+        console.log(info);
+        //发送成功后,关闭模态框,重新渲染数据
+        $('#addSecond').modal('hide');
+        currentPage = 1;
+        render()
+      }
+    })
+
+  })
 })
