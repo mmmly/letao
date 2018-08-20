@@ -125,9 +125,12 @@ $(function(){
       success:function(info){
         console.log(info);
         //发送成功后,关闭模态框,重新渲染数据
+        if(success.info){
         $('#addSecond').modal('hide');
         currentPage = 1;
         render()
+
+        }
       }
     })
 
