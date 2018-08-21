@@ -51,6 +51,8 @@ $(function(){
       }
     })
   })
+
+
   //点击一级分类,button中显示对应文本
   $('.dropdown-menu').on("click","li",function(){
     //var currentId = $(this).data('id');
@@ -64,6 +66,8 @@ $(function(){
     //重置表单
     $('#form').data("bootstrapValidator").updateStatus("categoryId","VALID");
   });
+
+
   //上传图片预览
   $('#fileUpload').fileupload({
       dataType:"json",

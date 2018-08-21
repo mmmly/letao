@@ -116,14 +116,11 @@
               </ul>
             </div>
             <!--隐藏域-->
-            <input type="text" id="dropHid" name="brandId" >
-            <input type="text" value="1" name="statu">
+            <input type="hidden" id="dropHid" name="brandId" >
+            <input type="hidden" value="1" name="statu">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="addCategory" name="brandName" placeholder="请输入商品名称">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control"  name="proName" placeholder="请输入商品名称">
+            <input type="text" class="form-control" id="addCategory" name="proName" placeholder="请输入商品名称">
           </div>
           <div class="form-group">
             <textarea class="form-control" name="proDesc" cols="30" rows="5" placeholder="请输入商品描述"></textarea>
@@ -145,8 +142,8 @@
             <input type="file" name="pic1" id="fileUpload" style="display: none;" data-url="/product/addProductPic" multiple>
           </div>
           <div class="form-group" id="imgBox1">
-            <img src="" alt="">
-            <input type="text" id="picHid" name="brandLogo">
+
+            <input type="hidden" id="picHid" name="brandLogo">
           </div>
         </div>
         <div class="modal-footer">
