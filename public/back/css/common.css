@@ -137,12 +137,15 @@ ul{
   height:400px;
   float: left;
 }
+
 .pie{
   width:48%;
   height:400px;
   float: right;
   /*margin-right:100px;*/
 }
+
+
 
 /*usery页*/
 .table{
@@ -152,4 +155,10 @@ ul{
 .table tbody>tr>td{
   text-align: center;
   vertical-align: middle;
+}
+
+
+/*商品管理*/
+#imgBox1 img{
+  width:100px;
 }

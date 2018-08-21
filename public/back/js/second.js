@@ -113,6 +113,7 @@ $(function(){
       }
     }
   });
+
   //表单校验成功后,阻止默认事件
   $('#form').on("success.form.bv",function(e){
     e.preventDefault();

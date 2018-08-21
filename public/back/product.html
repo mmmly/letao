@@ -46,18 +46,31 @@
     </ol>
     <!--主体内容部分-->
     <div class="lt_content">
-      <button id="addBtn" class="btn btn-default">添加分类</button>
+      <button id="addBtn" class="btn btn-default">添加商品</button>
       <table class="table table-bordered table-hover mt_20">
         <thead>
         <tr>
-          <th>序号</th>
-          <th>一级分类名称</th>
-          <th>二级分类名称</th>
-          <th>一级分类LOGO</th>
+          <th width="10%">序号</th>
+          <th width="25%">商品名称</th>
+          <th width="25%">商品描述</th>
+          <th width="10%">商品库存</th>
+          <th width="10%">商品尺寸</th>
+          <th width="10%">商品状态</th>
+          <th width="10%">操作</th>
         </tr>
         </thead>
         <tbody>
-
+        <tr>
+          <td>1</td>
+          <td>【莹恋】MIZUNO美津浓V1GA159002乒乓球鞋男鞋女鞋室内综合训练鞋</td>
+          <td>描述123123</td>
+          <td>44</td>
+          <td>35-56</td>
+          <td>已上架</td>
+          <td>
+            <button class="btn btn-danger">下架</button>
+          </td>
+        </tr>
         </tbody>
       </table>
       <div class="text-right"><ul id="paginator"></ul></div>
@@ -83,38 +96,57 @@
     </div>
   </div>
 </div>
-<!--添加二级分类模态框-->
-<div class="modal fade " tabindex="-1" role="dialog"  id="addSecond">
-  <div class="modal-dialog modal-sm" role="document">
+<!--添加商品模态框-->
+<div class="modal fade " tabindex="-1" role="dialog"  id="addProduct">
+  <div class="modal-dialog " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">添加分类</h4>
+        <h4 class="modal-title">添加商品</h4>
       </div>
       <form id="form">
         <div class="modal-body">
           <div class="form-group">
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" name="dropdownMenu1">
-                <span id="dropdownText">请选择一级分类</span>
+                <span id="dropdownText">请选择二级分类</span>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
               </ul>
             </div>
-            <input type="hidden" id="dropHid" name="categoryId" >
-            <input type="hidden" value="1">
+            <!--隐藏域-->
+            <input type="text" id="dropHid" name="brandId" >
+            <input type="text" value="1" name="statu">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="addCategory" name="brandName" placeholder="请输入二级分类">
+            <input type="text" class="form-control" id="addCategory" name="brandName" placeholder="请输入商品名称">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control"  name="proName" placeholder="请输入商品名称">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="proDesc" cols="30" rows="5" placeholder="请输入商品描述"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control"  name="num" placeholder="请输入商品库存">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="size" placeholder="请输入商品尺码">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="oldPrice" placeholder="请输入商品原价">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="price" placeholder="请输入商品现价">
           </div>
           <div class="form-group">
             <label for="fileUpload" type="button" class="btn btn-default" >上传图片</label>
-            <input type="file" name="pic1" id="fileUpload" style="display: none;" data-url="/category/addSecondCategoryPic" multiple>
+            <input type="file" name="pic1" id="fileUpload" style="display: none;" data-url="/product/addProductPic" multiple>
           </div>
-          <div class="form-group" id="imgBox">
-            <img src="./images/default.png" alt="" width="100px" name="pic1">
-            <input type="hidden" id="picHid" name="brandLogo">
+          <div class="form-group" id="imgBox1">
+            <img src="" alt="">
+            <input type="text" id="picHid" name="brandLogo">
           </div>
         </div>
         <div class="modal-footer">
@@ -127,26 +159,29 @@
 </div>
 
 
-<!--准备模板,渲染二级分类数据-->
-<script type="text/html" id="secondTpl">
+<!--准备模板,渲染商品数据-->
+<script type="text/html" id="productTpl">
   {{ each rows v i }}
-  <tr>
-    <td>{{ i + 1 + (page -1 ) * size}}</td>
-    <td>{{ v.categoryName }}</td>
-    <td>{{ v.brandName }}</td>
-    <td>
-      <img src="{{ v.brandLogo }}" alt="" height="50px">
-    </td>
-  </tr>
+    <tr>
+      <td>{{ i+1 + (page -1) * size}}</td>
+      <td>{{ v.proName }}</td>
+      <td>{{ v.proDesc }}</td>
+      <td>{{ v.num }}</td>
+      <td>{{ v.size }}</td>
+      <td>{{ v.statu === 1? "已上架" : ""}}</td>
+      <td>
+        <button class="btn btn-danger">下架</button>
+      </td>
+    </tr>
   {{ /each }}
 </script>
 
 
 
-<!--准备一级分类模板-->
-<script type="text/html" id="cateTpl">
+<!--准备二级分类模板-->
+<script type="text/html" id="secTpl">
   {{ each rows v i }}
-  <li data-id={{ v.id }}><a href="#">{{ v.categoryName}}</a></li>
+  <li data-id={{ v.id }}><a href="#">{{ v.brandName }}</a></li>
   {{ /each }}
 </script>
 
